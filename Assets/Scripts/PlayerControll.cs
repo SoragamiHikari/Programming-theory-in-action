@@ -7,11 +7,13 @@ public class PlayerControll : MonoBehaviour
 {
     private Rigidbody rb;
 
+    private int bullet = 10;
     private float verticalInput;
     private float horizontalInput;
 
-    public float moveSpeed;
-    public float rotateSpeed;
+    // ENCAPSULATION
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float rotateSpeed;
 
     public GameObject firePoint;
     public GameObject gun;
@@ -21,6 +23,7 @@ public class PlayerControll : MonoBehaviour
     void Start()
     {
         rb= GetComponent<Rigidbody>();
+        GameManager.Instance.ammo = bullet;
     }
 
     // Update is called once per frame
@@ -28,6 +31,7 @@ public class PlayerControll : MonoBehaviour
     {
         // ABSTRACTION
         InputPlayerControl();
+        InputFire();
     }
 
     private void FixedUpdate()
@@ -40,10 +44,19 @@ public class PlayerControll : MonoBehaviour
     {
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
+    }
 
+    void InputFire()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(bulletPrefabs, firePoint.transform.position, gun.transform.rotation);
+            if (bullet >= 0)
+            {
+                Instantiate(bulletPrefabs, firePoint.transform.position, gun.transform.rotation);
+            }
+            bullet--;
+            GameManager.Instance.ammo = bullet;
+            GameManager.Instance.AmmoToText();
         }
     }
 
