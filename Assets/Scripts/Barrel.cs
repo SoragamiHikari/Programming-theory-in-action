@@ -10,16 +10,13 @@ public class Barrel : Thing
 
     // POLYMORPHISM
 
-    public override void OnCollisionEnter(Collision collision)
+    public override void Destroyed()
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        hP--;
+        if (hP <= 0)
         {
-            hP--;
-            if (hP <= 0)
-            {
-                Instantiate(explotionFx, transform.position, transform.rotation);
-                Destroy(gameObject);
-            }
+            Instantiate(explotionFx, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
 }

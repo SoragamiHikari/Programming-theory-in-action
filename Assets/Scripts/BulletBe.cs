@@ -18,12 +18,6 @@ public class BulletBe : MonoBehaviour
         rb.AddForce(gun.transform.forward * bulletSpeed, ForceMode.Impulse);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);

@@ -10,16 +10,13 @@ public class Box : Thing
 
     // POLYMORPHISM
 
-    public override void OnCollisionEnter(Collision collision)
+    public override void Destroyed()
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        hP--;
+        if (hP <= 0)
         {
-            hP--;
-            if (hP <= 0)
-            {
-                Instantiate(bananaPrefabs, transform.position, transform.rotation);
-                Destroy(gameObject);
-            }
+            Instantiate(bananaPrefabs, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
 }

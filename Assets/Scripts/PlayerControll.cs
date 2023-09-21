@@ -50,7 +50,7 @@ public class PlayerControll : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (bullet >= 0)
+            if (bullet > 0)
             {
                 Instantiate(bulletPrefabs, firePoint.transform.position, gun.transform.rotation);
             }

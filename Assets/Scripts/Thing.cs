@@ -6,15 +6,20 @@ public class Thing : MonoBehaviour
 {
     public int hP = 3;
 
-    public virtual void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {
-            hP--;
-            if(hP <= 0)
-            {
-                Destroy(gameObject);
-            }
+            Destroyed();
+        }
+    }
+
+    public virtual void Destroyed()
+    {
+        hP--;
+        if (hP <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
