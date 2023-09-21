@@ -12,6 +12,7 @@ public class PlayerControll : MonoBehaviour
 
     public float moveSpeed;
     public float rotateSpeed;
+
     public GameObject firePoint;
     public GameObject gun;
     public GameObject bulletPrefabs;

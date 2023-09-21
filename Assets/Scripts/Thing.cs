@@ -6,19 +6,7 @@ public class Thing : MonoBehaviour
 {
     public int hP = 3;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
+    public virtual void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {
