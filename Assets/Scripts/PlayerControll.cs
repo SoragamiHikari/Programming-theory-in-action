@@ -25,16 +25,28 @@ public class PlayerControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ABSTRACTION
+        InputPlayerControl();
+    }
+
+    private void FixedUpdate()
+    {
+        // ABSTRACTION
+        PlayerMove();
+    }
+
+    void InputPlayerControl()
+    {
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bulletPrefabs, firePoint.transform.position, gun.transform.rotation);
         }
     }
 
-    private void FixedUpdate()
+    void PlayerMove()
     {
         rb.velocity = transform.forward * moveSpeed * verticalInput;
         transform.Rotate(Vector3.up, horizontalInput * rotateSpeed);
